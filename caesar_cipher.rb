@@ -19,6 +19,8 @@ def caesar_cipher(message, shift)
       else
         alphabet_upper[(26 - alphabet_upper.index(character) - shift).abs()]
       end
+    else
+      character
     end
   end
 
@@ -29,4 +31,4 @@ end
 puts caesar_cipher("z", 1)
 puts caesar_cipher("what a string", 5)
 puts caesar_cipher("Y", 2)
-puts caesar_cipher("What a string", 5)
+puts caesar_cipher("What a string!", 5)
