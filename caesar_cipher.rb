@@ -13,6 +13,12 @@ def caesar_cipher(message, shift)
       else
         alphabet_lower[(26 - alphabet_lower.index(character) - shift).abs()]
       end
+    elsif alphabet_upper.include?(character)
+      if alphabet_upper.index(character) + shift < 26
+        alphabet_upper[alphabet_upper.index(character) + shift]
+      else
+        alphabet_upper[(26 - alphabet_upper.index(character) - shift).abs()]
+      end
     end
   end
 
@@ -22,3 +28,5 @@ end
 
 puts caesar_cipher("z", 1)
 puts caesar_cipher("what a string", 5)
+puts caesar_cipher("Y", 2)
+puts caesar_cipher("What a string", 5)
