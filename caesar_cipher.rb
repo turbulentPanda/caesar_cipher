@@ -1,5 +1,10 @@
-def caesar_cipher(message, shift)
+def recalculate_shift(shift)
+  # Given a shift, recalculates the shift in the event that it is greater than 25
   shift = shift >= 26 ? (shift % 26) : shift
+end
+
+def caesar_cipher(message, shift)
+  shift = recalculate_shift(shift)
 
   alphabet_lower = "abcdefghijklmnopqrstuvwxyz"
   alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -26,6 +31,11 @@ def caesar_cipher(message, shift)
 
   encrypted_array.join("")
 
+end
+
+def recalculate_shift(shift)
+  # Given a shift, recalculates the shift in the event that it is greater than 25
+  shift = shift >= 26 ? (shift % 26) : shift
 end
 
 puts caesar_cipher("z", 1)
