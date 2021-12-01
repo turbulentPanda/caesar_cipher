@@ -32,4 +32,10 @@ def caesar_cipher(message, shift)
 
 end
 
-puts caesar_cipher("What a string!", 5)
+
+puts "Please enter a message to encrypt: "
+MESSAGE = gets.chomp
+puts "Please enter a shift (key): "
+SHIFT = gets.chomp.to_i
+ENCRYPTED_MESSAGE = caesar_cipher(MESSAGE, SHIFT)
+puts "Your Caesar-shifted (encrypted) message is: #{ENCRYPTED_MESSAGE}"
