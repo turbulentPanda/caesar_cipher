@@ -10,19 +10,19 @@ def shift_character(string, character, shift)
   end
 end
 
+ALPHABET_LOWER = "abcdefghijklmnopqrstuvwxyz"
+ALPHABET_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 def caesar_cipher(message, shift)
   shift = recalculate_shift(shift)
-
-  alphabet_lower = "abcdefghijklmnopqrstuvwxyz"
-  alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   message_array = message.split("")
 
   encrypted_array = message_array.map do |character|
-    if alphabet_lower.include?(character)
-      shift_character(alphabet_lower, character, shift)
-    elsif alphabet_upper.include?(character)
-      shift_character(alphabet_upper, character, shift)
+    if ALPHABET_LOWER.include?(character)
+      shift_character(ALPHABET_LOWER, character, shift)
+    elsif ALPHABET_UPPER.include?(character)
+      shift_character(ALPHABET_UPPER, character, shift)
     else
       character
     end
@@ -31,10 +31,5 @@ def caesar_cipher(message, shift)
   encrypted_array.join("")
 
 end
-
-def recalculate_shift(shift)
-  shift = shift >= 26 ? (shift % 26) : shift
-end
-
 
 puts caesar_cipher("What a string!", 5)
