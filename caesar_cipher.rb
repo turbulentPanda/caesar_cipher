@@ -16,9 +16,7 @@ ALPHABET_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 def caesar_cipher(message, shift)
   shift = recalculate_shift(shift)
 
-  message_array = message.split("")
-
-  encrypted_array = message_array.map do |character|
+  encrypted_array = message.split("").map do |character|
     if ALPHABET_LOWER.include?(character)
       shift_character(ALPHABET_LOWER, character, shift)
     elsif ALPHABET_UPPER.include?(character)
