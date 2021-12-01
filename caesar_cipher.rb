@@ -1,6 +1,13 @@
 def recalculate_shift(shift)
-  # Given a shift, recalculates the shift in the event that it is greater than 25
   shift = shift >= 26 ? (shift % 26) : shift
+end
+
+def shift_character(string, character, shift)
+  if string.index(character) + shift < 26
+    string[string.index(character) + shift]
+  else
+    string[(26 - string.index(character) - shift).abs()]
+  end
 end
 
 def caesar_cipher(message, shift)
@@ -13,17 +20,9 @@ def caesar_cipher(message, shift)
 
   encrypted_array = message_array.map do |character|
     if alphabet_lower.include?(character)
-      if alphabet_lower.index(character) + shift < 26
-        alphabet_lower[alphabet_lower.index(character) + shift]
-      else
-        alphabet_lower[(26 - alphabet_lower.index(character) - shift).abs()]
-      end
+      shift_character(alphabet_lower, character, shift)
     elsif alphabet_upper.include?(character)
-      if alphabet_upper.index(character) + shift < 26
-        alphabet_upper[alphabet_upper.index(character) + shift]
-      else
-        alphabet_upper[(26 - alphabet_upper.index(character) - shift).abs()]
-      end
+      shift_character(alphabet_upper, character, shift)
     else
       character
     end
@@ -34,11 +33,8 @@ def caesar_cipher(message, shift)
 end
 
 def recalculate_shift(shift)
-  # Given a shift, recalculates the shift in the event that it is greater than 25
   shift = shift >= 26 ? (shift % 26) : shift
 end
 
-puts caesar_cipher("z", 1)
-puts caesar_cipher("what a string", 5)
-puts caesar_cipher("Y", 2)
+
 puts caesar_cipher("What a string!", 5)
